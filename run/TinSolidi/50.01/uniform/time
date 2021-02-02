@@ -10,26 +10,20 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      transportProperties;
+    location    "50.01/uniform";
+    object      time;
 }
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-transportModel Newtonian;
+value           50.0100000000011349;
 
-// Laminar viscosity
-nu              [0 2 -1 0 0 0 0] 8e-07;
+name            "50.01";
 
-// Thermal expansion coefficient
-beta            [0 0 0 -1 0 0 0] 2.67e-04;
+index           1667;
 
-// Reference temperature
-TRef            [0 0 0 1 0 0 0] 505;
+deltaT          0.03;
 
-// Laminar Prandtl number
-Pr              [0 0 0 0 0 0 0] 2e-02;
+deltaT0         0.03;
 
-// Turbulent Prandtl number
-Prt             [0 0 0 0 0 0 0] 1.0;
 
 // ************************************************************************* //
