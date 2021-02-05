@@ -42,6 +42,20 @@ volVectorField U
     mesh
 );
 
+// Read the nodal value of latent heat (Delat H)
+Info<< "Reading field DH\n" << endl;
+volScalarField DH
+(
+    IOobject
+    (
+        "DH",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
 #include "createPhi.H"
 
 #include "readTransportProperties.H"
@@ -77,6 +91,54 @@ volScalarField alphat
         IOobject::AUTO_WRITE
     ),
     mesh
+);
+
+// liquid fraction
+volScalarField f_l
+(
+    IOobject
+    (
+        "f_l",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    DH/L_heat
+);
+
+// porous term coefficient C_poro
+volScalarField C_poro
+(
+    IOobject
+    (
+        "C_poro",
+        runTime.timeName(),
+        mesh
+    ),
+    -C_mushy*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro)
+);
+
+volScalarField DHcp_old
+(
+    IOobject
+    (
+        "DHcp_old",
+        runTime.timeName(),
+        mesh
+    ),
+    DH/cp
+);
+
+volScalarField DHcp
+(
+    IOobject
+    (
+        "DHcp",
+        runTime.timeName(),
+        mesh
+    ),
+    DH/cp
 );
 
 

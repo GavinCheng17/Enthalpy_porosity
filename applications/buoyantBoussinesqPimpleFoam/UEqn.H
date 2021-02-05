@@ -9,6 +9,7 @@
       + turbulence->divDevReff(U)
      ==
         fvOptions(U)
+      + fvc::Sp(C_poro,U)
     );
 
     UEqn.relax();
