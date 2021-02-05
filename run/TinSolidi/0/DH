@@ -9,21 +9,24 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "99.99/uniform";
-    object      time;
+    class       volScalarField;
+    object      DH;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-value           99.9900000000030218;
+dimensions      [0 2 -2 0 0 0 0];
 
-name            "99.99";
+internalField   uniform 60000; //if liquid, equals to the latent heat of fusion; if solid 0
 
-index           3333;
+boundaryField
+{
+    wall
+    {
+        type            calculated;
+        value           $internalField;
+    }
 
-deltaT          0.03;
-
-deltaT0         0.03;
-
+    #includeEtc "caseDicts/setConstraintTypes"
+}
 
 // ************************************************************************* //
