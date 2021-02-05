@@ -16,3 +16,15 @@ dimensionedScalar Pr("Pr", dimless, laminarTransport);
 
 // Turbulent Prandtl number
 dimensionedScalar Prt("Prt", dimless, laminarTransport);
+
+// Latent heat of fusion for tin
+dimensionedScalar L_heat("L_heat", dimEnergy/dimMass, laminarTransport);
+
+//Specific heat capacity
+dimensionedScalar cp("cp", dimEnergy/dimMass/dimTemperature, laminarTransport);
+
+//Mushy zone constant
+dimensionedScalar C_mushy("C_mushy", dimless/dimTime, laminarTransport);
+
+//Computational constant to avoid division by zero
+dimensionedScalar eps_poro("eps_poro", dimless, laminarTransport);
