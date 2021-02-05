@@ -58,9 +58,14 @@ PIMPLE
 
 relaxationFactors
 {
+    fields
+    {
+        p_rgh           0.7;
+    }
     equations
     {
-        ".*"   1.0;
+        U               0.6;
+        T               0.2;
     }
 }
 

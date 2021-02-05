@@ -33,3 +33,18 @@ Pr              [0 0 0 0 0 0 0] 2e-02;
 Prt             [0 0 0 0 0 0 0] 1.0;
 
 // ************************************************************************* //
+
+//Latent heat of fusion
+L_heat          [0 2 -2 0 0 0 0] 6e4;
+
+//Specific heat capacity
+cp          [0 2 -2 -1 0 0 0] 200;
+
+//Mushy zone constant
+C_mushy         [0 0 -1 0 0 0 0] 1e5;
+
+//Computational constant to avoid division by zero
+eps_poro        [0 0 0 0 0 0 0] 1e-03;
+
+
+
