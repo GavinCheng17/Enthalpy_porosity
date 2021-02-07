@@ -116,7 +116,7 @@ volScalarField C_poro
         runTime.timeName(),
         mesh
     ),
-    -C_mushy*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro)
+    -C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro)
 );
 
 volScalarField DHcp_old
