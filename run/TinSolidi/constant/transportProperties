@@ -27,7 +27,7 @@ beta            [0 0 0 -1 0 0 0] 2.67e-04;
 TRef            [0 0 0 1 0 0 0] 505;
 
 // Laminar Prandtl number
-Pr              [0 0 0 0 0 0 0] 2e-02;
+Pr              [0 0 0 0 0 0 0] 0.02;
 
 // Turbulent Prandtl number
 Prt             [0 0 0 0 0 0 0] 1.0;
