@@ -138,7 +138,7 @@ volScalarField DHcp
         runTime.timeName(),
         mesh
     ),
-    DH/cp
+    DH*0.0/cp
 );
 
 // create a scalar field to store diagonal coefficients at current time step Ap
