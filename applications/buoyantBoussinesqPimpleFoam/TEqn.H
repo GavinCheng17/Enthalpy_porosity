@@ -12,25 +12,14 @@
      ==
         radiation->ST(rhoCpRef, T)
       + fvOptions(T)
-     // - fvc::ddt(DHcp)
-      + (-DHcp+DHcp_old)/runTime.deltaT()
+      - fvc::ddt(DHcp)
+     // + (-DHcp+DHcp_old)/runTime.deltaT()
     );
 
     TEqn.relax();
 
     fvOptions.constrain(TEqn);
 
-    // create a scalar field to store diagonal coefficients 
-    volScalarField DiaCoeff
-(
-    IOobject
-    (
-        "DiaCoeff",
-        runTime.timeName(),
-        mesh
-    ), 
-    f_l  //TEqn.diag()
-);
 forAll(DiaCoeff.internalField(),index)
     {
         DiaCoeff[index] = TEqn.diag()[index];
@@ -53,7 +42,7 @@ forAll(DiaCoeff.internalField(),index)
     //update DHcp
     DHcp = DH/cp;
     //update the porosity term
-    C_poro = -C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro);
+    C_poro = C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro);
 
     TEqn.solve();
     //Info<< "Coeff_3 = " << TEqn.diag() << endl;

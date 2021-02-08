@@ -7,10 +7,10 @@
 \*---------------------------------------------------------------------------*/
 Build  : 6-fa1285188035
 Exec   : blockMesh
-Date   : Feb 07 2021
-Time   : 20:49:21
+Date   : Feb 08 2021
+Time   : 12:34:30
 Host   : "qian"
-PID    : 32282
+PID    : 2545
 I/O    : uncollated
 Case   : /home/qian/OpenFOAM/qian-6/run/TinSolidi
 nProcs : 1
