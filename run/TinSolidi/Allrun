@@ -4,10 +4,11 @@ cd ${0%/*} || exit 1    # Run from this directory
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
+nprocs=4
+foamDictionary -entry numberOfSubdomains -set $nprocs system/decomposeParDict
 application=$(getApplication)
-
 runApplication blockMesh
+runApplication decomposePar
 #runApplication setFields
-runApplication $application
-
+mpirun -np $nprocs $application -parallel > log.$application 2>&1
 #------------------------------------------------------------------------------

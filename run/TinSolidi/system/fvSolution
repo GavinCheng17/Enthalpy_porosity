@@ -60,12 +60,12 @@ relaxationFactors
 {
     fields
     {
-        p_rgh           0.7;
+        p_rgh           0.3;
     }
     equations
     {
-        U               0.6;
-        T               0.2;
+        U               0.8;
+        T               0.7;
     }
 }
 
