@@ -4,33 +4,12 @@
 
     volScalarField alphaEff("alphaEff", turbulence->nu()/Pr + alphat);
 
-    fvScalarMatrix TEqn
-    (
-        fvm::ddt(T)
-      + fvm::div(phi, T)
-      - fvm::laplacian(alphaEff, T)
-     ==
-        radiation->ST(rhoCpRef, T)
-      + fvOptions(T)
-     // - fvc::ddt(DHcp)
-     // + (-DHcp+DHcp_old)/runTime.deltaT()
-    );
-
-    TEqn.relax();
-
-    fvOptions.constrain(TEqn);
-
-forAll(DiaCoeff.internalField(),index)
-    {
-        DiaCoeff[index] = TEqn.diag()[index];
-        //Info<< "DiaCoeff[" << index << "] = " << DiaCoeff[index] << endl;
-    }
     //get the grid spacings
     //const surfaceVectorField& deltas = mesh().delta();
     //Enthalpy update equation
-    //DH += cp*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
-    DH += cp*1000*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
-    //DH += cp*(T - TRef);
+    DH += cp*20*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
+    //DH += cp*1000*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
+    //DH += cp*10*(T - TRef);
     //Info<< "Coeff_1 = " << 0.2*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue()) << endl;
     //Info<< "Coeff_2 = " << TEqn.diag() << endl;
     //Ensure DH is bounded
@@ -45,8 +24,31 @@ forAll(DiaCoeff.internalField(),index)
     //update the porosity term
     C_poro = C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro);
 
+    fvScalarMatrix TEqn
+    (
+        fvm::ddt(T)
+      + fvm::div(phi, T)
+      - fvm::laplacian(alphaEff, T)
+     ==
+        radiation->ST(rhoCpRef, T)
+      + fvOptions(T)
+      - fvc::ddt(DHcp)
+     // + (-DHcp+DHcp_old)/runTime.deltaT()
+    );
+
+    TEqn.relax();
+
+    fvOptions.constrain(TEqn);
+
+forAll(DiaCoeff.internalField(),index)
+    {
+        DiaCoeff[index] = TEqn.diag()[index];
+        //Info<< "DiaCoeff[" << index << "] = " << DiaCoeff[index] << endl;
+    }
+    
+
     TEqn.solve();
-    //Info<< "Coeff_3 = " << TEqn.diag() << endl;
+    //Info<< "dHdt_cp = " << (-DHcp+DHcp_old)/runTime.deltaT() << endl;
 
     radiation->correct();
 
