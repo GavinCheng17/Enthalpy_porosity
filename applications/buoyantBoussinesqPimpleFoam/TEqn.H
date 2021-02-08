@@ -12,7 +12,7 @@
      ==
         radiation->ST(rhoCpRef, T)
       + fvOptions(T)
-      - fvc::ddt(DHcp)
+     // - fvc::ddt(DHcp)
      // + (-DHcp+DHcp_old)/runTime.deltaT()
     );
 
@@ -28,9 +28,10 @@ forAll(DiaCoeff.internalField(),index)
     //get the grid spacings
     //const surfaceVectorField& deltas = mesh().delta();
     //Enthalpy update equation
-    DH += cp*0.2*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
-    //DH += cp*0.02*(T - TRef);
-    //Info<< "Coeff_1 = " << 1/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef) << endl;
+    //DH += cp*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
+    DH += cp*1000*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
+    //DH += cp*(T - TRef);
+    //Info<< "Coeff_1 = " << 0.2*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue()) << endl;
     //Info<< "Coeff_2 = " << TEqn.diag() << endl;
     //Ensure DH is bounded
     dimensionedScalar MaxDH = L_heat;
@@ -42,7 +43,7 @@ forAll(DiaCoeff.internalField(),index)
     //update DHcp
     DHcp = DH/cp;
     //update the porosity term
-    C_poro = C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l-eps_poro);
+    C_poro = C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro);
 
     TEqn.solve();
     //Info<< "Coeff_3 = " << TEqn.diag() << endl;
