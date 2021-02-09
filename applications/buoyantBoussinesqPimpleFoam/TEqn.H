@@ -4,25 +4,36 @@
 
     volScalarField alphaEff("alphaEff", turbulence->nu()/Pr + alphat);
 
-    //get the grid spacings
-    //const surfaceVectorField& deltas = mesh().delta();
+    //enthalpy update****************************
+    
+    /*//get the grid spacings
+    const surfaceVectorField& deltas = mesh.delta();
+    forAll(deltas, I)
+    {
+        Info<<  "dx[" << I << "] = " << deltas[I].x() <<endl;
+        Info<<  "dy[" << I << "] = " << deltas[I].y() <<endl;
+        Info<<  "dz[" << I << "] = " << deltas[I].z() <<endl;
+    }
+    */
+
     //Enthalpy update equation
-    DH += cp*20*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
-    //DH += cp*1000*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue())*(T - TRef);
-    //DH += cp*10*(T - TRef);
-    //Info<< "Coeff_1 = " << 0.2*DiaCoeff/(0.0889*0.0666/(80*60)/runTime.deltaTValue()) << endl;
-    //Info<< "Coeff_2 = " << TEqn.diag() << endl;
+    //DH += cp*20*DiaCoeff/(deltas.x()*deltas.y()/runTime.deltaTValue())*(T - TRef);
+    DH += cp*omega_DH*100*DiaCoeff/(dxdydz/runTime.deltaTValue())*(T - TRef);
+
     //Ensure DH is bounded
     dimensionedScalar MaxDH = L_heat;
     dimensionedScalar MinDH("MinDH", dimEnergy/dimMass, 0.0);
     DH = max(min(DH, MaxDH), MinDH);
-    //Info<< "DH = " << DH << endl;
+
     //update the liquid fraction 
     f_l = DH/L_heat;
+
     //update DHcp
     DHcp = DH/cp;
+
     //update the porosity term
-    C_poro = C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro);
+    C_poro = C_mushy/rho_ref*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro);
+    //end of enthalpy update****************************
 
     fvScalarMatrix TEqn
     (
@@ -32,7 +43,7 @@
      ==
         radiation->ST(rhoCpRef, T)
       + fvOptions(T)
-      - fvc::ddt(DHcp)
+      - fvc::ddt(DHcp) //source term added to account for the latent energy
      // + (-DHcp+DHcp_old)/runTime.deltaT()
     );
 
@@ -40,15 +51,14 @@
 
     fvOptions.constrain(TEqn);
 
+    //store diagonal coefficients of the T equation to use for the next time iteration
 forAll(DiaCoeff.internalField(),index)
     {
         DiaCoeff[index] = TEqn.diag()[index];
         //Info<< "DiaCoeff[" << index << "] = " << DiaCoeff[index] << endl;
     }
     
-
     TEqn.solve();
-    //Info<< "dHdt_cp = " << (-DHcp+DHcp_old)/runTime.deltaT() << endl;
 
     radiation->correct();
 
@@ -57,5 +67,5 @@ forAll(DiaCoeff.internalField(),index)
     rhok = 1.0 - beta*(T - TRef);
 
     //let DHcp_old = DHcp_new
-    DHcp_old = DHcp;
+    //DHcp_old = DHcp;
 }

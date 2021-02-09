@@ -116,9 +116,11 @@ volScalarField C_poro
         runTime.timeName(),
         mesh
     ),
-    C_mushy/7500*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro)
+    C_mushy/rho_ref*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro)
 );
 
+/*
+// create a scalar field to store the values of DH/cp at previous time step
 volScalarField DHcp_old
 (
     IOobject
@@ -129,7 +131,9 @@ volScalarField DHcp_old
     ),
     DH/cp
 );
+*/
 
+// create a scalar field to store the values of DH/cp
 volScalarField DHcp
 (
     IOobject
@@ -138,7 +142,7 @@ volScalarField DHcp
         runTime.timeName(),
         mesh
     ),
-    DH*0.0/cp
+    DH/cp
 );
 
 // create a scalar field to store diagonal coefficients at current time step Ap
@@ -150,7 +154,7 @@ volScalarField DHcp
         runTime.timeName(),
         mesh
     ), 
-    f_l  //initial value as a non-dimensional number
+    f_l*0.0  //initial value as a non-dimensional number
 );
 
 

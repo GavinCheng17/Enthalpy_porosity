@@ -9,7 +9,7 @@
       + turbulence->divDevReff(U)
      ==
         fvOptions(U)
-      - fvm::Sp(C_poro,U)
+      - fvm::Sp(C_poro,U) //porous source term
     );
 
     UEqn.relax();
