@@ -50,7 +50,7 @@ eps_poro        [0 0 0 0 0 0 0] 1e-03;
 rho_ref         [1 -3 0 0 0 0 0] 7500;
 
 //dx*dy*dz used for coefficeint A_p^old in the enthalpy update equation
-dxdydz          [0 0 0 0 0 0 0] 1.2335e-06;
+dxdydz          [0 0 0 0 0 0 0] 2.4670e-08; //0.0889*0.0666*0.01*2/(80*60*1)
 
 //relaxation factor in the enthalpy update equation
 omega_DH        [0 0 0 0 0 0 0] 0.2;

@@ -18,7 +18,7 @@
 
     //Enthalpy update equation
     //DH += cp*20*DiaCoeff/(deltas.x()*deltas.y()/runTime.deltaTValue())*(T - TRef);
-    DH += cp*omega_DH*100*DiaCoeff/(dxdydz/runTime.deltaTValue())*(T - TRef);
+    DH += cp*omega_DH*DiaCoeff/(dxdydz/runTime.deltaTValue())*(T - TRef);
 
     //Ensure DH is bounded
     dimensionedScalar MaxDH = L_heat;
