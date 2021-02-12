@@ -17,7 +17,8 @@ FoamFile
 
 ddtSchemes
 {
-    default         Euler;
+    default         CrankNicolson 1;// boundedBackward(Temp);    CrankNicolson 1;
+    ddt(T)          bounded backward;
 }
 
 gradSchemes
@@ -29,8 +30,8 @@ divSchemes
 {
     default         none;
 
-    div(phi,U)      Gauss linearUpwind grad(U);
-    div(phi,T)      Gauss limitedLinear 1;
+    div(phi,U)      Gauss linearUpwind grad(U); //  Gauss vanLeer;
+    div(phi,T)      Gauss vanLeer; // Gauss limitedLinear 1
 
     turbulence      Gauss limitedLinear 1;
     div(phi,k)      $turbulence;
