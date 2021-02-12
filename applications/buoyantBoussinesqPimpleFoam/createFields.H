@@ -116,7 +116,7 @@ volScalarField C_poro
         runTime.timeName(),
         mesh
     ),
-    C_mushy/rho_ref*(1-f_l)*(1-f_l)/(f_l*f_l*f_l+eps_poro)
+    C_mushy/rho_ref*(1-2*f_l+f_l*f_l)/(f_l*f_l*f_l+eps_poro)
 );
 
 /*
@@ -157,6 +157,17 @@ volScalarField DHcp
     f_l*0.0  //initial value as a non-dimensional number
 );
 
+// create a scalar field to store cell volumes
+    volScalarField cell_vol
+(
+    IOobject
+    (
+        "cell_vol",
+        runTime.timeName(),
+        mesh
+    ), 
+    f_l*1.0  //initial value as a non-dimensional number
+);
 
 #include "readGravitationalAcceleration.H"
 #include "readhRef.H"

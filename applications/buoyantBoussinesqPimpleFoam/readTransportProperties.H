@@ -32,8 +32,5 @@ dimensionedScalar eps_poro("eps_poro", dimless, laminarTransport);
 //reference density kg/m^3
 dimensionedScalar rho_ref("rho_ref", dimDensity, laminarTransport);
 
-//dx*dy*dz used for coefficeint A_p^old in the enthalpy update equation
-dimensionedScalar dxdydz("dxdydz", dimless, laminarTransport);
-
 //relaxation factor in the enthalpy update equation
 dimensionedScalar omega_DH("omega_DH", dimless, laminarTransport);
