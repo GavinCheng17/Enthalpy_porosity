@@ -1,0 +1,185 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-fa1285188035
+Exec   : buoyantBoussinesqPimpleFoamTemp -parallel
+Date   : Feb 13 2021
+Time   : 22:02:19
+Host   : "qian"
+PID    : 24233
+I/O    : uncollated
+Case   : /home/qian/OpenFOAM/qian-6/run/TinSolidi
+nProcs : 4
+Slaves : 
+3
+(
+"qian.24234"
+"qian.24235"
+"qian.24236"
+)
+
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: No convergence criteria found
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading thermophysical properties
+
+Reading field T
+
+Reading field p
+
+Reading field U
+
+Reading field DH
+
+Reading/calculating face flux field phi
+
+Selecting incompressible transport model Newtonian
+Creating turbulence model
+
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Reading field alphat
+
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+Radiation model not active: radiationProperties not found
+Selecting radiationModel none
+No finite volume options present
+Courant Number mean: 0 max: 0
+
+Starting time loop
+
+--> FOAM Warning : 
+    From function void Foam::particle::locate(const vector&, const vector*, Foam::label, bool, Foam::string)
+    in file particle/particle.C at line 493
+    "Particle initialised with a location outside of the mesh."
+Reading set description:
+    line1
+    line2
+    line3
+
+Reading surface description:
+    PCF
+
+Courant Number mean: 0 max: 0
+deltaT = 0.00012
+Time = 0.00012
+
+Iteration = 0
+DH/cp = dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 300;
+
+boundaryField
+{
+    top
+    {
+        type            calculated;
+        value           nonuniform 0();
+    }
+    bott
+    {
+        type            calculated;
+        value           uniform 300;
+    }
+    left
+    {
+        type            calculated;
+        value           nonuniform 0();
+    }
+    right
+    {
+        type            calculated;
+        value           uniform 300;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+    procBoundary0to1
+    {
+        type            processor;
+        value           uniform 300;
+    }
+    procBoundary0to2
+    {
+        type            processor;
+        value           uniform 300;
+    }
+}
+
+Posi = 1
+DILUPBiCGStab:  Solving for T, Initial residual = 1, Final residual = 2.10764e-10, No Iterations 2
+Posi = 2
+Enthalpy-energy sweep tolorance = 0.925718
+Iteration = 1
+DH/cp = dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 300;
+
+boundaryField
+{
+    top
+    {
+        type            calculated;
+        value           nonuniform 0();
+    }
+    bott
+    {
+        type            calculated;
+        value           uniform 300;
+    }
+    left
+    {
+        type            calculated;
+        value           nonuniform 0();
+    }
+    right
+    {
+        type            calculated;
+        value           uniform 300;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+    procBoundary0to1
+    {
+        type            processor;
+        value           uniform 300;
+    }
+    procBoundary0to2
+    {
+        type            processor;
+        value           uniform 300;
+    }
+}
+
+Posi = 1

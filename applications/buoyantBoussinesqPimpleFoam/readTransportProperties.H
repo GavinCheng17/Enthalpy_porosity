@@ -34,3 +34,9 @@ dimensionedScalar rho_ref("rho_ref", dimDensity, laminarTransport);
 
 //relaxation factor in the enthalpy update equation
 dimensionedScalar omega_DH("omega_DH", dimless, laminarTransport);
+
+//tolerance for the enthalpy-energy sweep
+dimensionedScalar tol_DH("tol_DH", dimless, laminarTransport);
+
+//store tol_DH in a double
+//double tole_DH = tol_DH.value();
