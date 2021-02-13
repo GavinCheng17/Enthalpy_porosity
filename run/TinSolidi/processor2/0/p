@@ -23,27 +23,19 @@ boundaryField
 {
     top
     {
-        type            calculated;
-        value           nonuniform 
-0
-;
+        type            zeroGradient;
     }
     bott
     {
-        type            calculated;
-        value           uniform 0;
+        type            zeroGradient;
     }
     left
     {
-        type            calculated;
-        value           uniform 0;
+        type            zeroGradient;
     }
     right
     {
-        type            calculated;
-        value           nonuniform 
-0
-;
+        type            zeroGradient;
     }
     frontAndBack
     {

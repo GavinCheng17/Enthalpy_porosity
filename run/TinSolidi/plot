@@ -16,7 +16,7 @@ set key vertical top left
 set grid
 #set cblabel "Density"
 
-plot "postProcessing/linesample/999.988184877415506/line1_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.1h", "postProcessing/linesample/999.988184877415506/line2_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.5h", "postProcessing/linesample/999.988184877415506/line3_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.9h"
+plot "postProcessing/linesample/1000.00866565110141/line1_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.1h", "postProcessing/linesample/1000.00866565110141/line2_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.5h", "postProcessing/linesample/1000.00866565110141/line3_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.9h"
 
 
 
@@ -37,5 +37,5 @@ set key vertical top left
 set grid
 #set cblabel "Density"
 
-plot "postProcessing/PhaseChangeFront/99.999555845128/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 100s", "postProcessing/PhaseChangeFront/299.992498486158411/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 300s", "postProcessing/PhaseChangeFront/500.01824259555525/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 500s", "postProcessing/PhaseChangeFront/700.017390262287108/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 700s",  "postProcessing/PhaseChangeFront/999.988184877415506/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 1000s"
+plot "postProcessing/PhaseChangeFront/100.01658375686/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 100s", "postProcessing/PhaseChangeFront/300.011213664043794/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 300s", "postProcessing/PhaseChangeFront/500.006896938974421/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 500s", "postProcessing/PhaseChangeFront/699.981474690104392/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 700s",  "postProcessing/PhaseChangeFront/1000.00866565110141/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 1000s"
 

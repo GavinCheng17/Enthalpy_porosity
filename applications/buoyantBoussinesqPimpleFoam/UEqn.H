@@ -10,6 +10,7 @@
      ==
         fvOptions(U)
       - fvm::Sp(C_poro,U) //porous source term
+      - beta*g*(T-TRef) // nuoyant term
     );
 
     UEqn.relax();
@@ -18,18 +19,7 @@
 
     if (pimple.momentumPredictor())
     {
-        solve
-        (
-            UEqn
-         ==
-            fvc::reconstruct
-            (
-                (
-                  - ghf*fvc::snGrad(rhok)
-                  - fvc::snGrad(p_rgh)
-                )*mesh.magSf()
-            )
-        );
+        solve(UEqn == -fvc::grad(p));
 
         fvOptions.correct(U);
     }

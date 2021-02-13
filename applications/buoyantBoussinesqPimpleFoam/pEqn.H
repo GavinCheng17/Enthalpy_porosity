@@ -1,52 +1,52 @@
 {
     volScalarField rAU("rAU", 1.0/UEqn.A());
     surfaceScalarField rAUf("rAUf", fvc::interpolate(rAU));
-    volVectorField HbyA(constrainHbyA(rAU*UEqn.H(), U, p_rgh));
+    volVectorField HbyA(constrainHbyA(rAU*UEqn.H(), U, p));
 
-    surfaceScalarField phig(-rAUf*ghf*fvc::snGrad(rhok)*mesh.magSf());
+//    surfaceScalarField phig(-rAUf*ghf*fvc::snGrad(rhok)*mesh.magSf());
 
     surfaceScalarField phiHbyA
     (
         "phiHbyA",
         fvc::flux(HbyA)
       + MRF.zeroFilter(rAUf*fvc::ddtCorr(U, phi))
-      + phig
+//      + phig
     );
 
     MRF.makeRelative(phiHbyA);
 
     // Update the pressure BCs to ensure flux consistency
-    constrainPressure(p_rgh, U, phiHbyA, rAUf, MRF);
+    constrainPressure(p, U, phiHbyA, rAUf, MRF);
 
     while (pimple.correctNonOrthogonal())
     {
-        fvScalarMatrix p_rghEqn
+        fvScalarMatrix pEqn
         (
-            fvm::laplacian(rAUf, p_rgh) == fvc::div(phiHbyA)
+            fvm::laplacian(rAUf, p) == fvc::div(phiHbyA)
         );
 
-        p_rghEqn.setReference(pRefCell, getRefCellValue(p_rgh, pRefCell));
+        pEqn.setReference(pRefCell, getRefCellValue(p, pRefCell));
 
-        p_rghEqn.solve(mesh.solver(p_rgh.select(pimple.finalInnerIter())));
+        pEqn.solve(mesh.solver(p.select(pimple.finalInnerIter())));
 
         if (pimple.finalNonOrthogonalIter())
         {
             // Calculate the conservative fluxes
-            phi = phiHbyA - p_rghEqn.flux();
+            phi = phiHbyA - pEqn.flux();
 
             // Explicitly relax pressure for momentum corrector
-            p_rgh.relax();
+            p.relax();
 
             // Correct the momentum source with the pressure gradient flux
             // calculated from the relaxed pressure
-            U = HbyA + rAU*fvc::reconstruct((phig - p_rghEqn.flux())/rAUf);
+            U = HbyA + rAU*fvc::reconstruct((- pEqn.flux())/rAUf);
             U.correctBoundaryConditions();
             fvOptions.correct(U);
         }
     }
 
     #include "continuityErrs.H"
-
+    /*
     p = p_rgh + rhok*gh;
 
     if (p_rgh.needReference())
@@ -59,4 +59,6 @@
         );
         p_rgh = p - rhok*gh;
     }
+    */
 }
+    
