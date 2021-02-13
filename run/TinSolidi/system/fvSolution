@@ -22,7 +22,7 @@ solvers
         solver          GAMG;
         smoother        DIC;
         tolerance       1e-8;
-        relTol          0.0;//0 everthing
+        relTol          0.01;//0 everthing
     }
 
     p_rghFinal
@@ -36,7 +36,7 @@ solvers
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-8;
-        relTol          0.0;
+        relTol          0.01;
     }
 
     "(U|T|k|epsilon)Final"
@@ -49,10 +49,10 @@ solvers
 
 PIMPLE
 {
-    momentumPredictor yes;//yes
+    momentumPredictor no;//yes
     nNonOrthogonalCorrectors 0;
     nCorrectors       2;
-    nOuterCorrectors  4;//nOuterCorrectors  4; original none
+//    nOuterCorrectors  4;//nOuterCorrectors  4; original none
     pRefCell          0;
     pRefValue         0;
 }

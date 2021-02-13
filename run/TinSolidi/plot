@@ -1,0 +1,41 @@
+
+#!/bin/bash
+
+
+set term png
+set output "Temperature_distribution.png"
+
+#set size ratio -1
+#set xrange [0:1.6]
+#set yrange [0:1]
+set xlabel "x (m)" font ",20"
+set ylabel "Temperature (K)" font ",20"
+set xtics font ", 16"
+set ytics font ", 16"
+set key vertical top left
+set grid
+#set cblabel "Density"
+
+plot "postProcessing/linesample/99.9943579322/line1_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.1h", "postProcessing/linesample/99.9943579322/line2_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.5h", "postProcessing/linesample/99.9943579322/line3_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.9h"
+
+
+
+
+
+reset session
+set term png
+set output "PhaseChangeFrontEvolution.png"
+
+#set size ratio -1
+#set xrange [0:1.6]
+#set yrange [0:1]
+set xlabel "x (m)" font ",20"
+set ylabel "y (m)" font ",20"
+set xtics font ", 16"
+set ytics font ", 16"
+set key vertical top left
+set grid
+#set cblabel "Density"
+
+plot "postProcessing/PhaseChangeFront/99.9943579322/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 100s", "postProcessing/PhaseChangeFront/49.9916307/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 50s", "postProcessing/PhaseChangeFront/9.99134/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 10s"
+
