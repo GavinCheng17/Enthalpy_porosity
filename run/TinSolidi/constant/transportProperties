@@ -50,7 +50,7 @@ eps_poro        [0 0 0 0 0 0 0] 1e-03;
 rho_ref         [1 -3 0 0 0 0 0] 7500;
 
 //relaxation factor in the enthalpy update equation
-omega_DH        [0 0 0 0 0 0 0] 0.2;
+omega_DH        [0 0 0 0 0 0 0] 0.3;
 
 
 
