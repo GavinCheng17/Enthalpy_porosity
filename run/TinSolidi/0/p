@@ -22,8 +22,7 @@ boundaryField
 {
     wall
     {
-        type            calculated;
-        value           $internalField;
+        type            zeroGradient;
     }
 
     #includeEtc "caseDicts/setConstraintTypes"

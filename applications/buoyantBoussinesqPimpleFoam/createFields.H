@@ -14,12 +14,12 @@ volScalarField T
     mesh
 );
 
-Info<< "Reading field p_rgh\n" << endl;
-volScalarField p_rgh
+Info<< "Reading field p\n" << endl;
+volScalarField p
 (
     IOobject
     (
-        "p_rgh",
+        "p",
         runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
@@ -174,31 +174,17 @@ volScalarField DHcp
 #include "gh.H"
 
 
-volScalarField p
-(
-    IOobject
-    (
-        "p",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    p_rgh + rhok*gh
-);
-
 label pRefCell = 0;
 scalar pRefValue = 0.0;
 setRefCell
 (
     p,
-    p_rgh,
     pimple.dict(),
     pRefCell,
     pRefValue
 );
 
-if (p_rgh.needReference())
+if (p.needReference())
 {
     p += dimensionedScalar
     (
@@ -208,7 +194,7 @@ if (p_rgh.needReference())
     );
 }
 
-mesh.setFluxRequired(p_rgh.name());
+mesh.setFluxRequired(p.name());
 
 #include "createMRF.H"
 #include "createIncompressibleRadiationModel.H"

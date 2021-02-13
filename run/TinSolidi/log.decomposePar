@@ -8,9 +8,9 @@
 Build  : 6-fa1285188035
 Exec   : decomposePar
 Date   : Feb 13 2021
-Time   : 11:30:54
+Time   : 14:06:34
 Host   : "qian"
-PID    : 22740
+PID    : 6958
 I/O    : uncollated
 Case   : /home/qian/OpenFOAM/qian-6/run/TinSolidi
 nProcs : 1
@@ -30,7 +30,7 @@ Create mesh
 Calculating distribution of cells
 Selecting decompositionMethod scotch
 
-Finished decomposition in 0.01 s
+Finished decomposition in 0 s
 
 Calculating original mesh data
 
