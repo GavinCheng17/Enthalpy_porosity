@@ -27,8 +27,8 @@ set term png
 set output "PhaseChangeFrontEvolution.png"
 
 #set size ratio -1
-#set xrange [0:1.6]
-#set yrange [0:1]
+set xrange [0:0.0889]
+set yrange [0:0.0666]
 set xlabel "x (m)" font ",20"
 set ylabel "y (m)" font ",20"
 set xtics font ", 16"
