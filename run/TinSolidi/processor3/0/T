@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 505;
+internalField   uniform 506.15;
 
 boundaryField
 {
@@ -32,7 +32,7 @@ boundaryField
     left
     {
         type            fixedValue;
-        value           uniform 508;
+        value           uniform 506.15;
     }
     right
     {
@@ -45,20 +45,15 @@ boundaryField
     {
         type            empty;
     }
-    procBoundary3to0
-    {
-        type            processor;
-        value           uniform 505;
-    }
     procBoundary3to1
     {
         type            processor;
-        value           uniform 505;
+        value           uniform 506.15;
     }
     procBoundary3to2
     {
         type            processor;
-        value           uniform 505;
+        value           uniform 506.15;
     }
 }
 

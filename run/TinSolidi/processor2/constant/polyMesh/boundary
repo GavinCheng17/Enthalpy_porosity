@@ -22,42 +22,42 @@ FoamFile
         type            wall;
         inGroups        1(wall);
         nFaces          0;
-        startFace       4897;
+        startFace       2330;
     }
     bott
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          46;
-        startFace       4897;
+        nFaces          40;
+        startFace       2330;
     }
     left
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          0;
-        startFace       4943;
+        nFaces          30;
+        startFace       2370;
     }
     right
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          54;
-        startFace       4943;
+        nFaces          0;
+        startFace       2400;
     }
     frontAndBack
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          5000;
-        startFace       4997;
+        nFaces          2400;
+        startFace       2400;
     }
     procBoundary2to0
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          53;
-        startFace       9997;
+        nFaces          30;
+        startFace       4800;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        2;
@@ -67,8 +67,8 @@ FoamFile
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          53;
-        startFace       10050;
+        nFaces          40;
+        startFace       4830;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        2;

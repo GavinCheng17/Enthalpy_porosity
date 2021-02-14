@@ -41,11 +41,6 @@ boundaryField
     {
         type            empty;
     }
-    procBoundary3to0
-    {
-        type            processor;
-        value           uniform (0 0 0);
-    }
     procBoundary3to1
     {
         type            processor;

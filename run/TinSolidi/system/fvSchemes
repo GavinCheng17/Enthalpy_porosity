@@ -17,9 +17,9 @@ FoamFile
 
 ddtSchemes
 {
-    default         CrankNicolson 1;// boundedBackward(Temp);    CrankNicolson 1;
+    default         Euler;// boundedBackward(Temp);    CrankNicolson 1;
     ddt(T)          bounded backward;
-    ddt(DHcp)       CrankNicolson 1;
+    //ddt(DHcp)       CrankNicolson 1;
 }
 
 gradSchemes

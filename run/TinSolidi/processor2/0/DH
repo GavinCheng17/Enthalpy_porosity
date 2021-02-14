@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 59200;
 
 boundaryField
 {
@@ -44,12 +44,12 @@ boundaryField
     procBoundary2to0
     {
         type            processor;
-        value           uniform 0;
+        value           uniform 59200;
     }
     procBoundary2to3
     {
         type            processor;
-        value           uniform 0;
+        value           uniform 59200;
     }
 }
 

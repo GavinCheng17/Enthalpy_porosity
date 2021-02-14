@@ -24,14 +24,14 @@ boundaryField
     top
     {
         type            epsilonWallFunction;
-        value           nonuniform 
-0
-;
+        value           uniform 1e-05;
     }
     bott
     {
         type            epsilonWallFunction;
-        value           uniform 1e-05;
+        value           nonuniform 
+0
+;
     }
     left
     {
@@ -48,11 +48,6 @@ boundaryField
     frontAndBack
     {
         type            empty;
-    }
-    procBoundary3to0
-    {
-        type            processor;
-        value           uniform 1e-05;
     }
     procBoundary3to1
     {

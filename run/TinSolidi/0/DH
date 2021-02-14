@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0; //if liquid, equals to the latent heat of fusion; if solid 0
+internalField   uniform 59200; //if liquid, equals to the latent heat of fusion; if solid 0
 
 boundaryField
 {

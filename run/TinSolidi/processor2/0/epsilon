@@ -36,14 +36,14 @@ boundaryField
     left
     {
         type            epsilonWallFunction;
-        value           nonuniform 
-0
-;
+        value           uniform 1e-05;
     }
     right
     {
         type            epsilonWallFunction;
-        value           uniform 1e-05;
+        value           nonuniform 
+0
+;
     }
     frontAndBack
     {

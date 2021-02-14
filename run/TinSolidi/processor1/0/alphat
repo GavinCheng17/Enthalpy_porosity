@@ -39,15 +39,15 @@ boundaryField
     {
         type            alphatJayatillekeWallFunction;
         Prt             0.85;
-        value           uniform 0;
+        value           nonuniform 
+0
+;
     }
     right
     {
         type            alphatJayatillekeWallFunction;
         Prt             0.85;
-        value           nonuniform 
-0
-;
+        value           uniform 0;
     }
     frontAndBack
     {

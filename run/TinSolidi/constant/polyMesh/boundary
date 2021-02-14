@@ -21,36 +21,36 @@ FoamFile
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          100;
-        startFace       19800;
+        nFaces          80;
+        startFace       9460;
     }
     bott
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          100;
-        startFace       19900;
+        nFaces          80;
+        startFace       9540;
     }
     left
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          100;
-        startFace       20000;
+        nFaces          60;
+        startFace       9620;
     }
     right
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          100;
-        startFace       20100;
+        nFaces          60;
+        startFace       9680;
     }
     frontAndBack
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          20000;
-        startFace       20200;
+        nFaces          9600;
+        startFace       9740;
     }
 )
 

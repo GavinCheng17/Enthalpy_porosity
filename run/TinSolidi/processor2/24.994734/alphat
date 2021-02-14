@@ -48,9 +48,7 @@ boundaryField
         Cmu             0.09;
         kappa           0.41;
         E               9.8;
-        value           nonuniform 
-0
-;
+        value           uniform 0;
     }
     right
     {
@@ -59,7 +57,9 @@ boundaryField
         Cmu             0.09;
         kappa           0.41;
         E               9.8;
-        value           uniform 0;
+        value           nonuniform 
+0
+;
     }
     frontAndBack
     {

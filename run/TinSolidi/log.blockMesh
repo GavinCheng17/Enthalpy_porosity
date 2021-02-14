@@ -8,9 +8,9 @@
 Build  : 6-fa1285188035
 Exec   : blockMesh
 Date   : Feb 14 2021
-Time   : 00:53:26
+Time   : 22:53:01
 Host   : "qian"
-PID    : 13317
+PID    : 14726
 I/O    : uncollated
 Case   : /home/qian/OpenFOAM/qian-6/run/TinSolidi
 nProcs : 1
@@ -47,8 +47,8 @@ Creating patches
 Creating cells
 Creating points with scale 1
     Block 0 cell size :
-        i : 0.001 .. 0.001
-        j : 0.001 .. 0.001
+        i : 0.00111125 .. 0.00111125
+        j : 0.00111 .. 0.00111
         k : 0.005 .. 0.005
 
 
@@ -56,19 +56,19 @@ Writing polyMesh
 ----------------
 Mesh Information
 ----------------
-  boundingBox: (0 0 -0.0025) (0.1 0.1 0.0025)
-  nPoints: 20402
-  nCells: 10000
-  nFaces: 40200
-  nInternalFaces: 19800
+  boundingBox: (0 0 -0.0025) (0.0889 0.0666 0.0025)
+  nPoints: 9882
+  nCells: 4800
+  nFaces: 19340
+  nInternalFaces: 9460
 ----------------
 Patches
 ----------------
-  patch 0 (start: 19800 size: 100) name: top
-  patch 1 (start: 19900 size: 100) name: bott
-  patch 2 (start: 20000 size: 100) name: left
-  patch 3 (start: 20100 size: 100) name: right
-  patch 4 (start: 20200 size: 20000) name: frontAndBack
+  patch 0 (start: 9460 size: 80) name: top
+  patch 1 (start: 9540 size: 80) name: bott
+  patch 2 (start: 9620 size: 60) name: left
+  patch 3 (start: 9680 size: 60) name: right
+  patch 4 (start: 9740 size: 9600) name: frontAndBack
 
 End
 

@@ -36,14 +36,14 @@ boundaryField
     left
     {
         type            kqRWallFunction;
-        value           uniform 1e-05;
+        value           nonuniform 
+0
+;
     }
     right
     {
         type            kqRWallFunction;
-        value           nonuniform 
-0
-;
+        value           uniform 1e-05;
     }
     frontAndBack
     {

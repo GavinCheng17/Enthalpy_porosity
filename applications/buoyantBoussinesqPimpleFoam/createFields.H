@@ -164,7 +164,7 @@ volScalarField DHcp
         runTime.timeName(),
         mesh
     ), 
-    C_poro/C_poro  //initial value as a non-dimensional number
+    T/T  //initial value as a non-dimensional number
 );
 
 #include "readGravitationalAcceleration.H"

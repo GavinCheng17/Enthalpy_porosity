@@ -36,14 +36,14 @@ boundaryField
     left
     {
         type            nutkWallFunction;
-        value           uniform 0;
+        value           nonuniform 
+0
+;
     }
     right
     {
         type            nutkWallFunction;
-        value           nonuniform 
-0
-;
+        value           uniform 0;
     }
     frontAndBack
     {

@@ -24,18 +24,18 @@ boundaryField
     top
     {
         type            fixedFluxPressure;
-        gradient        uniform 0;
-        value           uniform 0;
-    }
-    bott
-    {
-        type            fixedFluxPressure;
         gradient        nonuniform 
 0
 ;
         value           nonuniform 
 0
 ;
+    }
+    bott
+    {
+        type            fixedFluxPressure;
+        gradient        uniform 0;
+        value           uniform 0;
     }
     left
     {
@@ -63,11 +63,6 @@ boundaryField
         value           uniform 0;
     }
     procBoundary0to2
-    {
-        type            processor;
-        value           uniform 0;
-    }
-    procBoundary0to3
     {
         type            processor;
         value           uniform 0;

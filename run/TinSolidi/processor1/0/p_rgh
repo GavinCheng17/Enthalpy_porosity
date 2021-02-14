@@ -40,18 +40,18 @@ boundaryField
     left
     {
         type            fixedFluxPressure;
-        gradient        uniform 0;
-        value           uniform 0;
-    }
-    right
-    {
-        type            fixedFluxPressure;
         gradient        nonuniform 
 0
 ;
         value           nonuniform 
 0
 ;
+    }
+    right
+    {
+        type            fixedFluxPressure;
+        gradient        uniform 0;
+        value           uniform 0;
     }
     frontAndBack
     {

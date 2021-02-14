@@ -28,7 +28,9 @@ boundaryField
         Cmu             0.09;
         kappa           0.41;
         E               9.8;
-        value           uniform 0;
+        value           nonuniform 
+0
+;
     }
     bott
     {
@@ -37,9 +39,7 @@ boundaryField
         Cmu             0.09;
         kappa           0.41;
         E               9.8;
-        value           nonuniform 
-0
-;
+        value           uniform 0;
     }
     left
     {
@@ -71,11 +71,6 @@ boundaryField
         value           uniform 0;
     }
     procBoundary0to2
-    {
-        type            processor;
-        value           uniform 0;
-    }
-    procBoundary0to3
     {
         type            processor;
         value           uniform 0;
