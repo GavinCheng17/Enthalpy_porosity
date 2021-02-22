@@ -2,10 +2,11 @@
 #!/bin/bash
 
 
-set term eps
+set term eps size 2.7, 2.7
 set output "Temperature_distributionP079.eps"
+#set term postscript size 6, 6
 
-#set size ratio -1
+set size ratio -1
 #set xrange [0:1.6]
 #set yrange [0:1]
 set xlabel "x/L" font ",20"
@@ -20,24 +21,31 @@ set style line 13 lc rgb '#808080' lt 1 lw 0.2
 set grid xtics mxtics ytics mytics back ls 12, ls 13
 #set cblabel "Density"
 set datafile separator ","
-set size ratio -1
-set key font ",11"
+set key font ",9"
 
-plot "postProcessing/linesample/283.998655873424923/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "Along y = 0.1H", \
-"postProcessing/linesample/283.998655873424923/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "Along y = 0.5H", \
-"postProcessing/linesample/283.998655873424923/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "Along y = 0.9H", \
-"expe/temperaP079_datasets.csv" using 1:2 ps 0.6 lc 7 title "Along y = 0.1H", \
-"expe/temperaP079_datasets.csv" using 3:4 ps 0.6 lc 8 title "Along y = 0.5H", \
-"expe/temperaP079_datasets.csv" using 5:6 ps 0.6 lc 6 title "Along y = 0.9H"
+set lmargin 7.7
+set rmargin 1.5
+set tmargin 0
+set bmargin 2.7
+
+
+
+plot "postProcessing/linesample/283.998655873424923/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "y = 0.1H num", \
+"postProcessing/linesample/283.998655873424923/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "y = 0.5H num", \
+"postProcessing/linesample/283.998655873424923/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "y = 0.9H num", \
+"expe/temperaP079_datasets.csv" using 1:2 ps 0.6 lc 7 title "y = 0.1H exp", \
+"expe/temperaP079_datasets.csv" using 3:4 ps 0.6 lc 8 title "y = 0.5H exp", \
+"expe/temperaP079_datasets.csv" using 5:6 ps 0.6 lc 6 title "y = 0.9H exp"
 
 
 
 
 reset session
-set term eps
+set term eps size 2.7, 2.7
 set output "Temperature_distributionP529.eps"
+#set term postscript size 6, 6 
 
-#set size ratio -1
+set size ratio -1
 #set xrange [0:1.6]
 #set yrange [0:1]
 set xlabel "x/L" font ",20"
@@ -52,15 +60,19 @@ set style line 13 lc rgb '#808080' lt 1 lw 0.2
 set grid xtics mxtics ytics mytics back ls 12, ls 13
 #set cblabel "Density"
 set datafile separator ","
-set size ratio -1
-set key font ",11"
+set key font ",9"
 
-plot "postProcessing/linesample/1903.99888622267395/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "Along y = 0.1H", \
-"postProcessing/linesample/1903.99888622267395/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "Along y = 0.5H", \
-"postProcessing/linesample/1903.99888622267395/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "Along y = 0.9H", \
-"expe/temperaP529_datasets.csv" using 1:2 ps 0.6 lc 7 title "Along y = 0.1H", \
-"expe/temperaP529_datasets.csv" using 3:4 ps 0.6 lc 8 title "Along y = 0.5H", \
-"expe/temperaP529_datasets.csv" using 5:6 ps 0.6 lc 6 title "Along y = 0.9H"
+set lmargin 7.7
+set rmargin 1.5
+set tmargin 0
+set bmargin 2.7
+
+plot "postProcessing/linesample/1903.99888622267395/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "y = 0.1H num", \
+"postProcessing/linesample/1903.99888622267395/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "y = 0.5H num", \
+"postProcessing/linesample/1903.99888622267395/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "y = 0.9H num", \
+"expe/temperaP529_datasets.csv" using 1:2 ps 0.6 lc 7 title "y = 0.1H exp", \
+"expe/temperaP529_datasets.csv" using 3:4 ps 0.6 lc 8 title "y = 0.5H exp", \
+"expe/temperaP529_datasets.csv" using 5:6 ps 0.6 lc 6 title "y = 0.9H exp"
 
 
 

@@ -1,0 +1,91 @@
+
+#!/bin/bash
+
+
+set term eps size 2.7, 2.7
+set output "Temperature_distribution1000Grid.eps"
+#set term postscript size 6, 6
+
+set size ratio -1
+#set xrange [0:1.6]
+#set yrange [0:1]
+set xlabel "x/L" font ",20"
+set ylabel '{/Symbol Q}' enhanced font ",20"
+set xtics font ", 16"
+set ytics font ", 16"
+set key vertical top right
+set mxtics 10
+set mytics
+set style line 12 lc rgb '#808080' lt 1 lw 2
+set style line 13 lc rgb '#808080' lt 3 lw 0.2
+set grid xtics mxtics ytics mytics back ls 12, ls 13
+#set cblabel "Density"
+set datafile separator ","
+set key font ",7"
+
+set lmargin 7.7
+set rmargin 1.5
+set tmargin 0
+set bmargin 2.7
+
+
+
+plot "TinSolidi_20_15/postProcessing/linesample/999.994734114215476/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with line dashtype 2 lc 7 lw 2 title "y = 0.1H 20x15", \
+"TinSolidi_20_15/postProcessing/linesample/999.994734114215476/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 2 lc 7 lw 2 title "y = 0.5H 20x15", \
+"TinSolidi_20_15/postProcessing/linesample/999.994734114215476/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 2 lc 7 lw 2 title "y = 0.9H 20x15", \
+"TinSolidi_40_30/postProcessing/linesample/999.994734114215476/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with line dashtype 3 lc 8 lw 2 title "y = 0.1H 40x30", \
+"TinSolidi_40_30/postProcessing/linesample/999.994734114215476/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 3 lc 8 lw 2 title "y = 0.5H 40x30", \
+"TinSolidi_40_30/postProcessing/linesample/999.994734114215476/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 3 lc 8 lw 2 title "y = 0.9H 40x30", \
+"postProcessing/linesample/999.99276328840449/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with line dashtype 4 lc 6 lw 2 title "y = 0.1H 80x60", \
+"postProcessing/linesample/999.99276328840449/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 4 lc 6 lw 2 title "y = 0.5H 80x60", \
+"postProcessing/linesample/999.99276328840449/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 4 lc 6 lw 2 title "y = 0.9H 80x60", \
+"TinSolidi_160_120/postProcessing/linesample/1000.00953311130354/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with line dashtype 5 lc 4 lw 2 title "y = 0.1H 160x120", \
+"TinSolidi_160_120/postProcessing/linesample/1000.00953311130354/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 5 lc 4 lw 2 title "y = 0.5H 160x120", \
+"TinSolidi_160_120/postProcessing/linesample/1000.00953311130354/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with line dashtype 5 lc 4 lw 2 title "y = 0.9H 160x120"
+
+
+
+
+
+
+
+
+
+reset session
+set term eps size 4.7, 3
+set output "PhaseChangeFrontEvolutionGrid.eps"
+
+#set size ratio -1
+set xrange [0:0.0889]
+set yrange [0:0.0666]
+set xlabel "x (m)" font ",20"
+set ylabel "y (m)" font ",20"
+set xtics font ", 16"
+set ytics font ", 16"
+set key vertical top left
+set mxtics
+set mytics
+set style line 12 lc rgb '#808080' lt 1 lw 2
+set style line 13 lc rgb '#808080' lt 3 lw 0.2
+set grid xtics mxtics ytics mytics back ls 12, ls 13
+#set cblabel "Density"
+set datafile separator ","
+
+
+plot "TinSolidi_20_15/postProcessing/PhaseChangeFront/99.994734114574/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.003?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 7 lw 5 title "100s 20x15", \
+"TinSolidi_20_15/postProcessing/PhaseChangeFront/499.994734114656524/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.003?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 7 lw 5 title "500s 20x15", \
+"TinSolidi_20_15/postProcessing/PhaseChangeFront/1999.99473411330609/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.003?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 7 lw 5 title "2000s 20x15", \
+"TinSolidi_20_15/postProcessing/PhaseChangeFront/4999.9947341240013/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.003?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 7 lw 5 title "5000s 20x15", \
+"TinSolidi_40_30/postProcessing/PhaseChangeFront/99.994734114574/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.002?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 8 lw 5 title "100s 40x30", \
+"TinSolidi_40_30/postProcessing/PhaseChangeFront/499.994734114656524/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.002?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 8 lw 5 title "500s 40x30", \
+"TinSolidi_40_30/postProcessing/PhaseChangeFront/1999.99473411330609/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.002?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 8 lw 5 title "2000s 40x30", \
+"TinSolidi_40_30/postProcessing/PhaseChangeFront/4999.9947341240013/f_l_PCF.raw" using ($1 < 0.085?$1:NaN):($2 < 0.064 && $2 > 0.002?$2:NaN) "%lf %lf %lf" with linespoints ps 0.05 lc 8 lw 5 title "5000s 40x30", \
+"postProcessing/PhaseChangeFront/99.98148275129/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 6 lw 2 title "100s 80x60", \
+"postProcessing/PhaseChangeFront/500.011374892927108/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 6 lw 2 title "500s 80x60", \
+"postProcessing/PhaseChangeFront/2000.00993451345016/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 6 lw 2 title "2000s 80x60", \
+"postProcessing/PhaseChangeFront/4999.99789063997923/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 6 lw 4 title "5000s 80x60", \
+"TinSolidi_160_120/postProcessing/PhaseChangeFront/99.993732/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 4 lw 2 title "100s 160x120", \
+"TinSolidi_160_120/postProcessing/PhaseChangeFront/499.992654743214302/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 4 lw 2 title "500s 160x120", \
+"TinSolidi_160_120/postProcessing/PhaseChangeFront/2000.0076974634469/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 4 lw 2 title "2000s 160x120", \
+"TinSolidi_160_120/postProcessing/PhaseChangeFront/5000.00950903309695/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.01 lc 4 lw 4 title "5000s 160x120"
+
