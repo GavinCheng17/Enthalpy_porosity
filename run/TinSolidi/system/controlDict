@@ -62,7 +62,7 @@ functions
         type                  sets;
         functionObjectLibs    ("libsampling.so");
         writeControl          runTime;
-        writeInterval         10;
+        writeInterval         1;
 
 
         interpolationScheme cellPoint;
@@ -107,7 +107,7 @@ functions
         type                  surfaces;
         functionObjectLibs    ("libsampling.so");
         writeControl          runTime;
-        writeInterval         10;
+        writeInterval         1;
 
 
         interpolationScheme cellPoint;

@@ -18,7 +18,7 @@ FoamFile
 ddtSchemes
 {
     default         CrankNicolson 0.9;// boundedBackward(Temp);    CrankNicolson 1;
-    ddt(T)          bounded backward;
+    ddt(T)          bounded backward; //second-order
     //ddt(DHcp)       CrankNicolson 1;
 }
 
@@ -31,7 +31,7 @@ divSchemes
 {
     default         none;
 
-    div(phi,U)      Gauss linearUpwind grad(U); //  Gauss vanLeer;
+    div(phi,U)      Gauss linearUpwind grad(U); //  Gauss vanLeer;Gauss linearUpwindV grad(U);
     div(phi,T)      Gauss vanLeer; // Gauss limitedLinear 1
 
     turbulence      Gauss limitedLinear 1;

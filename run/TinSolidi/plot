@@ -2,29 +2,74 @@
 #!/bin/bash
 
 
-set term png
-set output "Temperature_distribution.png"
+set term eps
+set output "Temperature_distributionP079.eps"
 
 #set size ratio -1
 #set xrange [0:1.6]
 #set yrange [0:1]
-set xlabel "x (m)" font ",20"
-set ylabel "Temperature (K)" font ",20"
+set xlabel "x/L" font ",20"
+set ylabel '{/Symbol Q}' enhanced font ",20"
 set xtics font ", 16"
 set ytics font ", 16"
-set key vertical top left
-set grid
+set key vertical top right
+set mxtics
+set mytics
+set style line 12 lc rgb '#808080' lt 1 lw 2
+set style line 13 lc rgb '#808080' lt 1 lw 0.2
+set grid xtics mxtics ytics mytics back ls 12, ls 13
 #set cblabel "Density"
+set datafile separator ","
+set size ratio -1
+set key font ",11"
 
-plot "postProcessing/linesample/249.981339627277919/line1_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.1h", "postProcessing/linesample/249.981339627277919/line2_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.5h", "postProcessing/linesample/249.981339627277919/line3_T_p.xy" using 1:2 with linespoints ps 0.8 title "Temperature along y = 0.9h"
+plot "postProcessing/linesample/283.998655873424923/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "Along y = 0.1H", \
+"postProcessing/linesample/283.998655873424923/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "Along y = 0.5H", \
+"postProcessing/linesample/283.998655873424923/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "Along y = 0.9H", \
+"expe/temperaP079_datasets.csv" using 1:2 ps 0.6 lc 7 title "Along y = 0.1H", \
+"expe/temperaP079_datasets.csv" using 3:4 ps 0.6 lc 8 title "Along y = 0.5H", \
+"expe/temperaP079_datasets.csv" using 5:6 ps 0.6 lc 6 title "Along y = 0.9H"
+
+
+
+
+reset session
+set term eps
+set output "Temperature_distributionP529.eps"
+
+#set size ratio -1
+#set xrange [0:1.6]
+#set yrange [0:1]
+set xlabel "x/L" font ",20"
+set ylabel '{/Symbol Q}' enhanced font ",20"
+set xtics font ", 16"
+set ytics font ", 16"
+set key vertical top right
+set mxtics
+set mytics
+set style line 12 lc rgb '#808080' lt 1 lw 2
+set style line 13 lc rgb '#808080' lt 1 lw 0.2
+set grid xtics mxtics ytics mytics back ls 12, ls 13
+#set cblabel "Density"
+set datafile separator ","
+set size ratio -1
+set key font ",11"
+
+plot "postProcessing/linesample/1903.99888622267395/line1_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "Along y = 0.1H", \
+"postProcessing/linesample/1903.99888622267395/line2_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "Along y = 0.5H", \
+"postProcessing/linesample/1903.99888622267395/line3_T_p.xy" using ($1/0.0889):(($2-505.08)/(506.15-505.08) >= 0?($2-505.08)/(506.15-505.08):NaN)  "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "Along y = 0.9H", \
+"expe/temperaP529_datasets.csv" using 1:2 ps 0.6 lc 7 title "Along y = 0.1H", \
+"expe/temperaP529_datasets.csv" using 3:4 ps 0.6 lc 8 title "Along y = 0.5H", \
+"expe/temperaP529_datasets.csv" using 5:6 ps 0.6 lc 6 title "Along y = 0.9H"
+
 
 
 
 
 
 reset session
-set term png
-set output "PhaseChangeFrontEvolution.png"
+set term eps
+set output "PhaseChangeFrontEvolution.eps"
 
 #set size ratio -1
 set xrange [0:0.0889]
@@ -34,8 +79,23 @@ set ylabel "y (m)" font ",20"
 set xtics font ", 16"
 set ytics font ", 16"
 set key vertical top left
-set grid
+set mxtics
+set mytics
+set style line 12 lc rgb '#808080' lt 1 lw 2
+set style line 13 lc rgb '#808080' lt 1 lw 0.2
+set grid xtics mxtics ytics mytics back ls 12, ls 13
 #set cblabel "Density"
+set datafile separator ","
 
-plot "postProcessing/PhaseChangeFront/49.99473411/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 50s", "postProcessing/PhaseChangeFront/99.994734114574/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 100s", "postProcessing/PhaseChangeFront/149.984628119246025/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 150s", "postProcessing/PhaseChangeFront/200.01178894206933/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 200s",  "postProcessing/PhaseChangeFront/249.981339627277919/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) with points ps 0.8 title "Phase Change Front at 250s"
+
+plot "postProcessing/PhaseChangeFront/277.018031582819276/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 1 title "0.077 hr num", \
+"postProcessing/PhaseChangeFront/593.981680921231259/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 2 title "0.165 hr num", \
+"postProcessing/PhaseChangeFront/1903.99888622267395/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 6 title "0.529 hr num", \
+"postProcessing/PhaseChangeFront/5262.99341020719839/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 7 title "1.462 hr num",  \
+"postProcessing/PhaseChangeFront/6825.99284388880642/f_l_PCF.raw" using ($1 < 0.088?$1:NaN):($2 < 0.0656 && $2 > 0.001?$2:NaN) "%lf %lf %lf" with linespoints ps 0.2 lc 8 title "1.896 hr num", \
+"expe/wpd_datasets.csv" using ($1*0.01):($2*0.01) ps 0.6 lc 1 title "0.077 hr exp", \
+"expe/wpd_datasets.csv" using ($3*0.01):($4*0.01) ps 0.6 lc 2 title "0.165 hr exp", \
+"expe/wpd_datasets.csv" using ($5*0.01):($6*0.01) ps 0.6 lc 6 title "0.529 hr exp", \
+"expe/wpd_datasets.csv" using ($7*0.01):($8*0.01) ps 0.6 lc 7 title "1.462 hr exp", \
+"expe/wpd_datasets.csv" using ($9*0.01):($10*0.01) ps 0.6 lc 8 title "1.896 hr exp"
 
