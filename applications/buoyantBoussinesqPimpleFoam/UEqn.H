@@ -10,7 +10,7 @@
      ==
         fvOptions(U)
       - fvm::Sp(C_poro,U) //porous source term
-      - beta*g*(T-TRef) // nuoyant term
+      - beta*g*(T-TRef) // buoyant term
     );
 
     UEqn.relax();

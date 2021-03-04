@@ -66,18 +66,6 @@ autoPtr<incompressible::turbulenceModel> turbulence
     incompressible::turbulenceModel::New(U, phi, laminarTransport)
 );
 
-/*// Kinematic density for buoyancy force
-volScalarField rhok
-(
-    IOobject
-    (
-        "rhok",
-        runTime.timeName(),
-        mesh
-    ),
-    1.0 - beta*(T - TRef)
-);*/
-
 // kinematic turbulent thermal thermal conductivity m2/s
 Info<< "Reading field alphat\n" << endl;
 volScalarField alphat
@@ -119,17 +107,6 @@ volScalarField C_poro
     C_mushy/rho_ref*(1-2*f_l+f_l*f_l)/(f_l*f_l*f_l+eps_poro)
 );
 
-/*// create a scalar field to store the values of DH/cp at previous time step
-volScalarField DHcp_old
-(
-    IOobject
-    (
-        "DHcp_old",
-        runTime.timeName(),
-        mesh
-    ),
-    DH/cp
-);*/
 
 // create a scalar field to store the values of DH/cp
 volScalarField DHcp

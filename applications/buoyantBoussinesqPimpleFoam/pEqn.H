@@ -3,14 +3,12 @@
     surfaceScalarField rAUf("rAUf", fvc::interpolate(rAU));
     volVectorField HbyA(constrainHbyA(rAU*UEqn.H(), U, p));
 
-//    surfaceScalarField phig(-rAUf*ghf*fvc::snGrad(rhok)*mesh.magSf());
 
     surfaceScalarField phiHbyA
     (
         "phiHbyA",
         fvc::flux(HbyA)
       + MRF.zeroFilter(rAUf*fvc::ddtCorr(U, phi))
-//      + phig
     );
 
     MRF.makeRelative(phiHbyA);
@@ -46,19 +44,5 @@
     }
 
     #include "continuityErrs.H"
-    /*
-    p = p_rgh + rhok*gh;
-
-    if (p_rgh.needReference())
-    {
-        p += dimensionedScalar
-        (
-            "p",
-            p.dimensions(),
-            pRefValue - getRefCellValue(p, pRefCell)
-        );
-        p_rgh = p - rhok*gh;
-    }
-    */
 }
     

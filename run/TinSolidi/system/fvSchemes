@@ -31,7 +31,7 @@ divSchemes
 {
     default         none;
 
-    div(phi,U)      Gauss linearUpwind grad(U); //  Gauss vanLeer;Gauss linearUpwindV grad(U);
+    div(phi,U)      Gauss linearUpwind grad(U);//Gauss linearUpwind grad(U); //  Gauss vanLeer;Gauss linearUpwindV grad(U);
     div(phi,T)      Gauss vanLeer; // Gauss limitedLinear 1
 
     turbulence      Gauss limitedLinear 1;
